@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'http://localhost:4343',
+    baseURL: 'MUSIC_API_HOST',
     withCredentials: true,
 })

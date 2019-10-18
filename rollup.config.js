@@ -5,7 +5,10 @@ import { eslint } from "rollup-plugin-eslint";
 import { terser } from "rollup-plugin-terser";
 import run from "rollup-plugin-run";
 import typescript from "rollup-plugin-typescript";
+import replace from "rollup-plugin-replace";
 import pkg from "./package.json";
+
+require("dotenv").config();
 
 const isDev = process.env.ROLLUP_WATCH === "true";
 
@@ -23,6 +26,7 @@ export default {
   context: "global",
   cache: isDev,
   plugins: [
+    replace({ MUSIC_API_HOST: process.env.MUSIC_API_HOST }),
     eslint({
       fix: true,
       throwOnError: !isDev,
