@@ -26,7 +26,7 @@ export default {
   context: "global",
   cache: isDev,
   plugins: [
-    replace({ MUSIC_API_HOST: process.env.MUSIC_API_HOST }),
+    replace({ MUSIC_API_HOST: process.env.MUSIC_API_HOST || "http://localhost:4343" }),
     eslint({
       fix: true,
       throwOnError: !isDev,
