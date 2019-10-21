@@ -1,5 +1,5 @@
-import { TypeSongInfo } from './SongInfo'
-import { TypeAlbumInfo } from './AlbumInfo'
-import { TypeArtistInfo } from './ArtistInfo'
+import { typeSongDefs } from './typeSongDefs'
+import { typeAlbumDefs } from './typeAlbumDefs'
+import { typeArtistDefs } from './typeArtistDefs'
 
-export const schemas = [TypeArtistInfo, TypeAlbumInfo, TypeSongInfo]
+export const schemas = [typeArtistDefs, typeAlbumDefs, typeSongDefs]

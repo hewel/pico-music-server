@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
-export const TypeSongInfo = gql`
-    type SongInfo {
+export const typeSongDefs = gql`
+    type Song {
         songId: ID!
         songName: String!
         duration: Int!
@@ -11,6 +11,6 @@ export const TypeSongInfo = gql`
         publishTime: Int!
     }
     type Query {
-        songDetail(songId: ID!): SongInfo
+        song(songId: ID!): Song
     }
 `

@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-koa'
 
-export const TypeArtistInfo = gql`
+export const typeArtistDefs = gql`
     type ArtistInfo {
         artistId: ID!
         artistName: String!

@@ -7,5 +7,7 @@
     "sourceMap": false,
     "strictNullChecks": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

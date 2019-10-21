@@ -1,9 +1,9 @@
 import axios from '../utils/axios'
-import { ISongItemGet, ISongItem } from './requestTypes'
+import { ISongRaw, ISong } from './requestTypes'
 
-export async function getSongDetail(id: string): Promise<ISongItem> {
+export async function getSongDetail(id: string): Promise<ISong> {
     const { data } = await axios.get('/song/detail', { params: { ids: id } })
-    const songs: ISongItemGet[] = data.songs
+    const songs: ISongRaw[] = data.songs
     const {
         id: songId,
         name: songName,

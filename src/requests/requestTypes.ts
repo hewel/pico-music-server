@@ -1,4 +1,4 @@
-export interface IArtistGet {
+export interface IArtistRaw {
     id: number
     name: string
     tns?: []
@@ -12,7 +12,7 @@ export interface IArtist {
     alias?: []
 }
 
-export interface IAlbumGet {
+export interface IAlbumRaw {
     id: number
     name: string
     picUrl: string
@@ -30,17 +30,17 @@ export interface IAlbum {
     pic?: number
 }
 
-export interface ISongItemGet {
+export interface ISongRaw {
     id: number
     name: string
     dt: number
-    ar: IArtistGet[]
-    al: IAlbumGet
+    ar: IArtistRaw[]
+    al: IAlbumRaw
     copyright: boolean
     publishTime: number
 }
 
-export interface ISongItem {
+export interface ISong {
     songId: number
     songName: string
     duration: number

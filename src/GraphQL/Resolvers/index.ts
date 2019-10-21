@@ -1,3 +1,3 @@
-import { RSongDetail } from './songDetail'
+import { songResolvers } from './songResolvers'
 
-export const resolvers = [RSongDetail]
+export const resolvers = [songResolvers]
