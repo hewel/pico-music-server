@@ -2,9 +2,9 @@ import { gql } from 'apollo-server-koa'
 
 export const typeArtistDefs = gql`
     type ArtistInfo {
-        artistId: ID!
-        artistName: String!
-        tns: [String]
+        id: ID!
+        name: String!
+        tns: [String]!
         alias: [String]
     }
 `

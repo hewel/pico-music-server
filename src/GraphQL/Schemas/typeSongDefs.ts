@@ -2,13 +2,13 @@ import { gql } from 'apollo-server-koa'
 
 export const typeSongDefs = gql`
     type Song {
-        songId: ID!
-        songName: String!
+        id: ID!
+        name: String!
         duration: Int!
         artist: [ArtistInfo]
         album: AlbumInfo
         copyright: Boolean!
-        publishTime: Int!
+        publishTime: Date!
     }
     type Query {
         song(songId: ID!): Song

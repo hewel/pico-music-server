@@ -1,3 +1,4 @@
+import { commonResolvers } from './commonResolvers'
 import { songResolvers } from './songResolvers'
 
-export const resolvers = [songResolvers]
+export const resolvers = [commonResolvers, songResolvers]

@@ -6,8 +6,8 @@ export interface IArtistRaw {
 }
 
 export interface IArtist {
-    artistId: number
-    artistName: string
+    id: number
+    name: string
     tns?: []
     alias?: []
 }
@@ -22,11 +22,11 @@ export interface IAlbumRaw {
 }
 
 export interface IAlbum {
-    albumId: number
-    albumName: string
-    albumPicUrl: string
+    id: number
+    name: string
+    picUrl: string
     tns?: []
-    pic_str?: string
+    picStr?: string
     pic?: number
 }
 
@@ -41,8 +41,8 @@ export interface ISongRaw {
 }
 
 export interface ISong {
-    songId: number
-    songName: string
+    id: number
+    name: string
     duration: number
     artist: IArtist[]
     album: IAlbum
