@@ -9,6 +9,7 @@
     "commit": "git-cz"
   },
   "devDependencies": {
+    "@types/js-base64": "^2.3.1",
     "@types/koa": "^2.0.49",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-router": "^7.0.42",
@@ -44,6 +45,7 @@
     "apollo-server-koa": "^2.9.6",
     "axios": "^0.19.0",
     "graphql": "^14.5.8",
+    "js-base64": "^2.5.1",
     "koa": "^2.10.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

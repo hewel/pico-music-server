@@ -10,4 +10,14 @@ export const typeSongListDefs = gql`
         edges: [SongListEdge]!
         totalCount: Int
     }
+    type songListFilter implements ListFilter {
+        playlistId: ID!
+        after: String
+        first: Int
+        before: String
+        last: Int
+    }
+    type Query {
+        songList(songListFilter: songListFilter!): [SongList]!
+    }
 `
