@@ -2,6 +2,7 @@ import { ISongRaw, ISong, IAlbumRaw, IAlbum } from './requestTypes'
 
 export function parseAlbum(AlbumRow: IAlbumRaw): IAlbum {
     const { id, name, picUrl, pic, pic_str: picStr, tns } = AlbumRow
+
     return {
         id,
         name,
@@ -14,12 +15,14 @@ export function parseAlbum(AlbumRow: IAlbumRaw): IAlbum {
 
 export function parseSong(songRow: ISongRaw): ISong {
     const { id, name, dt: duration, ar: artist, al, copyright, publishTime } = songRow
+    const album = parseAlbum(al)
+
     return {
         id,
         name,
         duration,
         artist,
-        album: parseAlbum(al),
+        album,
         copyright,
         publishTime,
     }
