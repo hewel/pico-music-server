@@ -15,3 +15,9 @@ export interface IList<T> {
     edges: IListEdge<T>[]
     totalCount: number
 }
+export interface IFilter {
+    after?: string
+    before?: string
+    first?: number
+    last?: number
+}

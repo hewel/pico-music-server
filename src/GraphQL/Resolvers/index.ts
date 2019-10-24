@@ -1,4 +1,6 @@
-import { commonResolvers } from './commonResolvers'
-import { songResolvers } from './songResolvers'
+import { mergeAll } from 'ramda'
 
-export const resolvers = [commonResolvers, songResolvers]
+import { commonResolvers } from './commonResolvers'
+import { queryResolvers } from './queryResolvers'
+
+export const resolvers = mergeAll([commonResolvers, queryResolvers])

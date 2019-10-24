@@ -10,7 +10,4 @@ export const typeSongDefs = gql`
         copyright: Boolean!
         publishTime: Date!
     }
-    type Query {
-        song(songId: ID!): Song
-    }
 `

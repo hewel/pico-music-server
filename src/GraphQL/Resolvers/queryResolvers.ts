@@ -1,26 +1,30 @@
 import { IResolvers } from 'apollo-server-koa'
-import { Base64 } from 'js-base64'
 
-import { getSongList } from '../../requests'
+import { getSongList, getSongDetail } from '../../requests'
+
 import { ISong } from '../../requests/requestTypes'
 import { IPageInfo, IListEdge, IList } from './resolverTypes'
+
+import sliceEdges from './_sliceEdges'
+import getPageInfo from './_getPageInfo'
+import toEdges from './_toEdges'
 
 type ISongListEdge = IListEdge<ISong>
 type ISongList = IList<ISong>
 
-export const songListResolvers: IResolvers = {
+export const queryResolvers: IResolvers = {
     Query: {
+        song: async (_parent, { songId }): Promise<ISong> =>
+            getSongDetail(songId),
         songList: async (
             _parent,
-            { songListFilter: { playlistId, after, first, before, last } }
+            { playlistId, songListFilter }
         ): Promise<ISongList> => {
             const songList = await getSongList(playlistId)
-            const cursor: string = after || before
-            const edges: ISongListEdge[] = songList.map(song => ({
-                node: song,
-                cursor: Base64.encode(song.id.toString()),
-            }))
-            const pageInfo: IPageInfo = {}
+            const songEdges: ISongListEdge[] = toEdges(songList, 'id')
+
+            const edges = sliceEdges(songEdges)(songListFilter)
+            const pageInfo: IPageInfo = getPageInfo(songEdges, edges)
             const totalCount: number = edges.length
 
             return {
