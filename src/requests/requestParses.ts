@@ -14,7 +14,15 @@ export function parseAlbum(AlbumRow: IAlbumRaw): IAlbum {
 }
 
 export function parseSong(songRow: ISongRaw): ISong {
-    const { id, name, dt: duration, ar: artist, al, copyright, publishTime } = songRow
+    const {
+        id,
+        name,
+        dt: duration,
+        ar: artist,
+        al,
+        copyright,
+        publishTime,
+    } = songRow
     const album = parseAlbum(al)
 
     return {
