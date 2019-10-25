@@ -49,3 +49,22 @@ export interface ISong {
     copyright: boolean
     publishTime: number
 }
+
+export interface ISongUrlRow {
+    id: number
+    url: string
+    br: number
+    size: number
+    md5: string
+    type: string
+    level: string
+}
+export interface ISongUrl {
+    id: number
+    url: string
+    bitRate: number
+    fileSize: number
+    md5: string
+    type: string
+    level: string
+}

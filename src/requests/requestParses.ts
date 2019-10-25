@@ -1,4 +1,11 @@
-import { ISongRaw, ISong, IAlbumRaw, IAlbum } from './requestTypes'
+import {
+    ISongRaw,
+    ISong,
+    IAlbumRaw,
+    IAlbum,
+    ISongUrlRow,
+    ISongUrl,
+} from './requestTypes'
 
 export function parseAlbum(AlbumRow: IAlbumRaw): IAlbum {
     const { id, name, picUrl, pic, pic_str: picStr, tns } = AlbumRow
@@ -33,5 +40,18 @@ export function parseSong(songRow: ISongRaw): ISong {
         album,
         copyright,
         publishTime,
+    }
+}
+
+export function parseSongUrl(row: ISongUrlRow): ISongUrl {
+    const { id, url, br: bitRate, size: fileSize, md5, type, level } = row
+    return {
+        id,
+        url,
+        bitRate,
+        fileSize,
+        md5,
+        type,
+        level,
     }
 }

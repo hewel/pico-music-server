@@ -1,8 +1,9 @@
 import { IResolvers } from 'apollo-server-koa'
+import { merge } from 'ramda'
 
-import { getSongList, getSongDetail } from '../../requests'
+import { getSongList, getSongDetail, getSongUrl } from '../../requests'
 
-import { ISong } from '../../requests/requestTypes'
+import { ISong, ISongUrl } from '../../requests/requestTypes'
 import { IPageInfo, IListEdge, IList } from './resolverTypes'
 
 import sliceEdges from './_sliceEdges'
@@ -14,8 +15,14 @@ type ISongList = IList<ISong>
 
 export const queryResolvers: IResolvers = {
     Query: {
-        song: async (_parent, { songId }): Promise<ISong> =>
-            getSongDetail(songId),
+        song: async (_parent, { songId }): Promise<ISong & ISongUrl> =>
+            merge(
+                ...(await Promise.all([
+                    getSongDetail(songId),
+                    getSongUrl(songId),
+                ]))
+            ),
+
         songList: async (
             _parent,
             { playlistId, songListFilter }
