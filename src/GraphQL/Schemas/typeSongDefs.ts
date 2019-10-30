@@ -7,8 +7,8 @@ export const typeSongDefs = gql`
         duration: Int!
         artist: [ArtistInfo]
         album: AlbumInfo
-        copyright: Boolean!
-        publishTime: Date!
+        copyright: Boolean
+        publishTime: Date
         url: String!
         bitRate: Int
         fileSize: Int

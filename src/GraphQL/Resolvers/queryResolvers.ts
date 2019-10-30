@@ -1,9 +1,15 @@
 import { IResolvers } from 'apollo-server-koa'
 import { merge } from 'ramda'
 
-import { getSongList, getSongDetail, getSongUrl } from '../../requests'
+import {
+    getSongList,
+    getSongDetail,
+    getSongUrl,
+    getSearchSuggest,
+    getSearchResult,
+} from '../../requests'
 
-import { ISong, ISongUrl } from '../../requests/requestTypes'
+import { ISong, ISongUrl, ISearchFilter } from '../../requests/requestTypes'
 import { IPageInfo, IListEdge, IList } from './resolverTypes'
 
 import sliceEdges from './_sliceEdges'
@@ -39,6 +45,14 @@ export const queryResolvers: IResolvers = {
                 totalCount,
                 pageInfo,
             }
+        },
+
+        searchSuggest: async (_parent, { keywords }) =>
+            await getSearchSuggest(keywords),
+
+        search: async (_parent, args, context, info) => {
+            const searchFilter: ISearchFilter = args.searchFilter
+            return await getSearchResult(searchFilter)
         },
     },
 }

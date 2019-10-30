@@ -33,21 +33,26 @@ export interface IAlbum {
 export interface ISongRaw {
     id: number
     name: string
-    dt: number
+    dt?: number
+    duration?: number
     ar: IArtistRaw[]
+    artists: IArtistRaw[]
     al: IAlbumRaw
-    copyright: boolean
-    publishTime: number
+    album: IAlbumRaw
+    copyright?: boolean
+    copyrightId?: number
+    publishTime?: number
 }
 
 export interface ISong {
     id: number
     name: string
-    duration: number
+    duration?: number
     artist: IArtist[]
     album: IAlbum
-    copyright: boolean
-    publishTime: number
+    copyright?: boolean
+    copyrightId?: number
+    publishTime?: number
 }
 
 export interface ISongUrlRow {
@@ -67,4 +72,11 @@ export interface ISongUrl {
     md5: string
     type: string
     level: string
+}
+
+export interface ISearchFilter {
+    keywords: string
+    type?: string
+    first: number
+    offset: number
 }

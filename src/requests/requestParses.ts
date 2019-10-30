@@ -24,13 +24,19 @@ export function parseSong(songRow: ISongRaw): ISong {
     const {
         id,
         name,
-        dt: duration,
-        ar: artist,
+        dt,
+        duration: rdt,
+        ar,
+        artists,
         al,
+        album: ral,
         copyright,
         publishTime,
     } = songRow
-    const album = parseAlbum(al)
+
+    const duration = dt || rdt
+    const artist = ar || artists
+    const album = parseAlbum(al || ral)
 
     return {
         id,

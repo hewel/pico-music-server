@@ -9,4 +9,16 @@ export const commonTypes = gql`
         startCursor: String
         endCursor: String
     }
+    input Filter {
+        after: String
+        first: Int
+        before: String
+        last: Int
+    }
+    input SearchFilter {
+        keywords: String!
+        type: String
+        first: Int
+        offset: Int
+    }
 `
