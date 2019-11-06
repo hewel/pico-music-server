@@ -12,15 +12,16 @@ jobs:
         node-version: [8.x, 10.x, 12.x]
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: install, build
     - run: yarn install
-    - run: yarn build
-    - run: npx apollo service:push
+      run: yarn build
+      run: npx apollo service:push
       env:
         MUSIC_API_HOST: http://118.25.24.46:7777
         ENGINE_API_KEY: service:pico-music:lkH2lVIWOs4lqbbrob3lLQ
