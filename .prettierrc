@@ -10,6 +10,7 @@
       "files": [
         "*.json",
         "*.html",
+        "*.yml",
         "*.css",
         "*.less",
         "*.scss",
