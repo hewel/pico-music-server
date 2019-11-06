@@ -1,11 +1,11 @@
 import axios from '../utils/axios'
 import { parseSong } from './requestParses'
 
-import { ISongRaw, ISearchFilter } from './requestTypes'
+import { ISongRaw, ISong, ISearchFilter } from './requestTypes'
 
 type ISuggestSongs = ISongRaw[]
 
-export async function getSearchSuggest(keywords: string) {
+export async function getSearchSuggest(keywords: string): Promise<ISong[]> {
     const { data } = await axios.get('/search/suggest', {
         params: { keywords },
     })
@@ -13,7 +13,12 @@ export async function getSearchSuggest(keywords: string) {
     return songList.map(suggest => parseSong(suggest))
 }
 
-export async function getSearchResult(filter: ISearchFilter) {
+export async function getSearchResult(
+    filter: ISearchFilter
+): Promise<{
+    songList: ISong[]
+    songCount: number
+}> {
     const { keywords, type, first: limit = 16, offset } = filter
 
     const {
