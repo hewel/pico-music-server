@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x]
 
     steps:
       - name: Checkout
@@ -22,7 +22,8 @@ jobs:
         run: |
           yarn install
           yarn build
-          npx apollo service:push
+          yarn global add apollo
+          apollo service:push
         env:
           MUSIC_API_HOST: http://118.25.24.46:7777
           ENGINE_API_KEY: service:pico-music:lkH2lVIWOs4lqbbrob3lLQ
