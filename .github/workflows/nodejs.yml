@@ -22,8 +22,7 @@ jobs:
         run: |
           yarn install
           yarn build
-          yarn global add apollo
-          apollo service:push
+          npx apollo service:push
         env:
           MUSIC_API_HOST: http://118.25.24.46:7777
           ENGINE_API_KEY: service:pico-music:lkH2lVIWOs4lqbbrob3lLQ
